@@ -44,13 +44,13 @@ def runSimulation(numTrials, printProb=True, storeResults=True):
     return probFromSim, trialNum, probVsTrialNum
     
 #Run some number of simulations and average the results
-averageProb = 0
-numSims = 10
-trialsPerSim = 10**7
-
-for i in range(numSims):
-    pSim, tN, pVstN = runSimulation(trialsPerSim, False, False)
-    averageProb += pSim
-    
-averageProb /= numSims
-print "Probability is %f" % averageProb
+#averageProb = 0
+#numSims = 10
+#trialsPerSim = 10**7
+#
+#for i in range(numSims):
+#    pSim, tN, pVstN = runSimulation(trialsPerSim, False, False)
+#    averageProb += pSim
+#    
+#averageProb /= numSims
+#print "Probability is %f" % averageProb
