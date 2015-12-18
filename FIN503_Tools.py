@@ -37,4 +37,10 @@ class Bond(object):
         if self.par != None and self.cy != None and self.pr != None:
             self.cr = (self.cy*self.pr)/self.par
             
-        print "Bond's CY = %0.2f%%" % (self.cr*100)
+        print "Bond's CR = %0.2f%%" % (self.cr*100)
+        
+    def calcCY(self):
+        if self.pr != None and self.par != None and self.cr != None:
+            self.cy = (self.par*self.cr)/self.pr
+            
+        print "Bond's CY = %0.2f%%" % (self.cy*100)
