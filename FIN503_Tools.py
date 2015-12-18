@@ -29,6 +29,12 @@ class Bond(object):
         print "Bond price = $%.2f" % self.pr
         
     def calcYTM(self):
-        self.ytm = np.rate(2*self.mat, 0.5*self.par*self.cr, -1*self.pr, self.par)
+        self.ytm = 2*np.rate(2*self.mat, 0.5*self.par*self.cr, -1*self.pr, self.par)
         
-        print "Bond's YTM = %0.4f" % self.ytm
+        print "Bond's YTM = %0.2f%%" % (self.ytm*100)
+        
+    def calcCR(self):
+        if self.par != None and self.cy != None and self.pr != None:
+            self.cr = (self.cy*self.pr)/self.par
+            
+        print "Bond's CY = %0.2f%%" % (self.cr*100)
