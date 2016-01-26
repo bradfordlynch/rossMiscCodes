@@ -116,3 +116,16 @@ def computeFS(fs, production, r_tax, r_debt, w_pay, t0_i, n_collec_per):
             fs[6,i] = 175
             fs[11,i] = (fs[6,i] + fs[7,i] + fs[8,i] + fs[9,1]) - \
             (fs[10,i] + fs[12,i] + fs[13,i] + fs[14,i] + fs[15,i])
+            
+def plotTrialData(trialID, trials, t0):
+    plt.figure(figsize=(8,5))
+    months = range(1,13)
+    plt.plot(months, trials[6,t0:,trialID], label='Cash')
+    plt.plot(months, trials[7,t0:,trialID], label='AR')
+    plt.plot(months, trials[8,t0:,trialID], label='Inventory')
+    plt.plot(months, trials[11,t0:,trialID], label='Notes Payable')
+    plt.title('Financials of Firm During Trial #%d' % trialID)
+    plt.xlabel('Month')
+    plt.ylabel("Value (000's of Dollars)")
+    plt.legend(loc=2)
+    plt.show()
