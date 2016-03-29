@@ -3,15 +3,14 @@ import scipy.special as sp
 import numba
 
 maxArg = 700
+eps = 1E-10
 
 @numba.jit
 def gammaP(a, x):
     if (a <= 0) or (x < 0):
         raise ValueError
-    elif x < (a + 1):
-        return sp.gammainc(a, x)
     else:
-        return 1 - sp.gammainc(a, x)
+        return sp.gammainc(a, x)
         
 @numba.jit
 def gammaQ(a, x):
@@ -20,7 +19,7 @@ def gammaQ(a, x):
     elif x < a + 1:
         return 1 - sp.gammainc(a, x)
     else:
-        return sp.gammainc(a, x)
+        return 1 - sp.gammainc(a, x)
     
 @numba.jit
 def gZero(r, theta):
@@ -46,7 +45,7 @@ def BigG(r, theta):
         else:
             return np.exp(-theta)
     else:
-        return gammaQ(r, theta)
+        return gammaQ(r + 1, theta)
         
 @numba.jit
 def littleG(r, theta):
@@ -109,5 +108,15 @@ def BPoisson(Q, r, theta):
 def IPoisson(Q, r, theta, B):
     return float(Q + 1) / 2 + r - theta + B
 
-
+@numba.jit
+def GPoissonInv(SL, theta):
+    r = 0
+    
+    CR = GPoisson(r, theta)
+    
+    while CR <= (SL-eps):
+        r += 1
+        CR = GPoisson(r, theta)
+        
+    return r
     
