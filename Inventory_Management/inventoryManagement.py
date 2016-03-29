@@ -3,7 +3,11 @@ import scipy.special as sp
 import numba
 
 maxArg = 700
+<<<<<<< HEAD
 eps = 1E-10
+=======
+eps = 1e-10
+>>>>>>> origin/master
 
 @numba.jit
 def gammaP(a, x):
