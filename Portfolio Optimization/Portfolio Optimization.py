@@ -165,8 +165,7 @@ riskFreeRate = 0.0021
 dur = 20
 numPeriodsAnnually = 252.0/dur
 windowedData = data[::dur]
-rets = (windowedData - windowedData.shift(-1)) / windowedData.shift(-1)
-#rets = np.log(windowedData/windowedData.shift(1))
+rets = np.log(windowedData/windowedData.shift(1))
 
 #Calculate stock mean-variance
 meanDailyReturn = rets.mean()
