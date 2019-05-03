@@ -7,7 +7,7 @@
 ################################################################################
 import matplotlib.pyplot as plt
 import pandas as pd
-import pandas.io.data as web
+from pandas_datareader import data as web
 import numpy as np
 import scipy.optimize as sco
 
